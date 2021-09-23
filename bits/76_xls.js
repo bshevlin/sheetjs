@@ -468,6 +468,9 @@ function parse_workbook(blob, options/*:ParseOpts*/)/*:Workbook*/ {
 					}
 				} break;
 				case 'LabelSst':
+					if (!sst[val.isst]) {
+						sst[val.isst] = {t: ''};
+					}
 					temp_val=make_cell(sst[val.isst].t, val.ixfe, 's');
 					if(sst[val.isst].h) temp_val.h = sst[val.isst].h;
 					temp_val.XF = XFs[temp_val.ixfe];
