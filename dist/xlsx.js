@@ -4,7 +4,7 @@
 /*global global, exports, module, require:false, process:false, Buffer:false, ArrayBuffer:false */
 var XLSX = {};
 function make_xlsx_lib(XLSX){
-XLSX.version = '0.17.2';
+XLSX.version = '0.17.3';
 var current_codepage = 1200, current_ansi = 1252;
 /*global cptable:true, window */
 if(typeof module !== "undefined" && typeof require !== 'undefined') {
@@ -17498,6 +17498,9 @@ wb.opts.Date1904 = Workbook.WBProps.date1904 = val; break;
 					}
 				} break;
 				case 'LabelSst':
+					if (!sst[val.isst]) {
+						sst[val.isst] = {t: ''};
+					}
 					temp_val=make_cell(sst[val.isst].t, val.ixfe, 's');
 					if(sst[val.isst].h) temp_val.h = sst[val.isst].h;
 					temp_val.XF = XFs[temp_val.ixfe];
